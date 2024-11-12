@@ -1,0 +1,7 @@
+int32 command
+
+---
+
+int32 id
+bool confirm
+PlanningPoint[] trajectory

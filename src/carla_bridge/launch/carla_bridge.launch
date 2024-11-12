@@ -1,0 +1,9 @@
+<!-- -->
+<launch>
+    <node pkg="carla_bridge" type="carla_bridge" name="carla_bridge" output="screen">
+        <param name="ues_sim_time"  value="false" />
+        <rosparam command="load" file="$(find carla_bridge)/config/carla_config.yaml"/>
+        <param name="carla_bridge_path"  value="$(find carla_bridge)" />
+
+    </node>
+</launch>

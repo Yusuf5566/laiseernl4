@@ -1,0 +1,32 @@
+carla:
+  town_name: Town04
+  host: localhost
+  port: 2000
+  timeout: 20
+  synchronous_mode: false
+
+map:
+  route_start_point_index: 78  #起点一致 280
+  route_dis: 3
+  route_size: 2000
+  tailoring: false
+  get_route_plot: false
+  tailoring_point: 100  #裁剪个数
+
+traffic:
+  creat_traffic_flow: true
+  auto_pilot: false  # 画出道路图片
+  object_count: 50
+
+ego_vehicle:
+  vehicle_blueprint: vehicle.tesla.model3
+  color: 255,255,255
+  #  start_point_index: 108 #起点一致  280
+  target_speed: 8.33
+  speed_Kp: 0.206
+  speed_Ki: 0.0206
+  speed_Kd: 0.515
+  accel_Kp: 0.7
+  accel_Ki: 0.02
+  accel_Kd: 0.0
+  control_time_step: 0.05

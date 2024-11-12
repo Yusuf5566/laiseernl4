@@ -1,0 +1,9 @@
+vehicle:
+  wheelbase: 2.5
+  maxSteeringAngle: 1.2211
+
+
+controller:
+  type: "PurePursuitController"
+#  type: "LQRController"
+  dt: 0.1

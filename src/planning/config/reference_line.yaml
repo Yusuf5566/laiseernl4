@@ -1,0 +1,8 @@
+reference:
+  ref_weight_smooth: 20
+  ref_weight_path_length: 10
+  ref_weight_ref_deviation: 50
+  distance_backward: 10
+  distance_forward: 50
+  #  smooth_type: "DiscreteReferenceLine"
+  smooth_type: "SplineReferenceLine"

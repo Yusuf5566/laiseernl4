@@ -1,0 +1,56 @@
+#EM Planner 相关参数
+
+#########路径规划相关##############
+
+collision_distance: 0.5
+ego_half_length: 1.5
+ego_half_width: 1.5;
+
+#DP Path cost
+dp_sample_l: 1 # dp采样横向距离间隔
+dp_sample_s: 5.0 # dp采样纵向距离间隔
+dp_sample_rows: 9 # dp采样行数（横向）,一般设置为奇数
+dp_sample_cols: 10  # dp采样列数（纵向）
+
+dp_cost_collision: 1.0e+9
+dp_cost_dl: 150.0
+dp_cost_ddl: 10.0
+dp_cost_dddl: 1.0
+dp_cost_ref: 50.0
+
+#QP Path cost
+qp_cost_l: 15.0
+qp_cost_dl: 150.0
+qp_cost_ddl: 10.0
+qp_cost_dddl: 1.0
+qp_cost_ref: 15.0
+qp_cost_end_l: 0.0
+qp_cost_end_dl: 0.0
+qp_cost_end_ddl: 0.0
+
+
+#########速度规划相关############
+#TO- DO
+#DP Path cost
+total_path_length: 150
+total_time: 7
+dimension_s: 100
+dimension_t: 10
+
+dp_speed_weight: 1.0
+dp_accel_weight: 10.0
+dp_jerk_weight: 10.0
+dp_obstacle_weight: 1
+
+dp_obstacle_cost: 12
+dp_speed_cost: 1.0e3
+exceed_speed_penalty: 1.0e3
+low_speed_penalty: 10
+accel_penalty: 1.0
+decel_penalty: 1.0
+
+positive_jerk_penalty: 1.0
+negative_jerk_penalty: 1.0
+
+max_acc: 3.0
+max_dec: -4.0

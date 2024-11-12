@@ -1,0 +1,112 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 19,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "Linux",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "generator": "Unix Makefiles",
+            "warnings": {
+                "dev": false,
+                "deprecated": false
+            },
+            "cacheVariables": {
+                "BUILD_TESTING": "OFF",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CATKIN_ENABLE_TESTING": "OFF",
+                "PYTHON_EXECUTABLE": "/usr/bin/python",
+                "CMAKE_MODULE_PATH": "/opt/install/lib/cmake/Ceres"
+            }
+        },
+        {
+            "name": "amd64-workspace",
+            "hidden": true,
+            "inherits": "Linux",
+            "binaryDir": "${sourceDir}/build-${presetName}",
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "/opt/ros/noetic;${sourceDir}/devel-${presetName}",
+                "CATKIN_DEVEL_PREFIX": "${sourceDir}/devel-${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install-${presetName}"
+            }
+        },
+        {
+            "name": "arm64-workspace",
+            "hidden": true,
+            "inherits": "amd64-workspace",
+            "cacheVariables": {
+                "CROSS_BUILD": "ON"
+            }
+        },
+        {
+            "name": "release-amd64",
+            "inherits": "amd64-workspace",
+            "displayName": "Linux Relase amd64",
+            "description": "Linux Relase amd64 Configuration",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "release-arm64",
+            "inherits": "arm64-workspace",
+            "displayName": "Linux Relase arm64",
+            "description": "Linux Relase arm64 Configuration",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug-amd64",
+            "inherits": "amd64-workspace",
+            "displayName": "Linux Debug amd64",
+            "description": "Linux Debug amd64 Configuration",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "debug-arm64",
+            "inherits": "arm64-workspace",
+            "displayName": "Linux Debug arm64",
+            "description": "Linux Debug arm64 Configuration",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release-amd64",
+            "configurePreset": "release-amd64",
+            "displayName": "Linux Release amd64",
+            "description": "Linux Relase amd64 Configuration"
+        },
+        {
+            "name": "release-arm64",
+            "configurePreset": "release-arm64",
+            "displayName": "Linux Release arm64",
+            "description": "Linux Relase arm64 Configuration"
+        },
+        {
+            "name": "debug-amd64",
+            "configurePreset": "debug-amd64",
+            "displayName": "Linux Debug amd64",
+            "description": "Linux Debug amd64 Configuration"
+        },
+        {
+            "name": "debug-arm64",
+            "configurePreset": "debug-arm64",
+            "displayName": "Linux Debug arm64",
+            "description": "Linux Debug arm64 Configuration"
+        }
+    ]
+}

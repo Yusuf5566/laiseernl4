@@ -1,0 +1,11 @@
+<!-- -->
+<launch>
+    <node pkg="planning" type="planning" name="planning" output="screen" _launch-prefix="gdb -ex run --args">
+        <param name="ues_sim_time"  value="false" />
+        <rosparam command="load" file="$(find planning)/config/reference_line.yaml"/>
+        <rosparam command="load" file="$(find planning)/config/em_planner.yaml"/>
+        <rosparam command="load" file="$(find planning)/config/lattice_planner.yaml"/>
+        <param name="planning_figure_path"  value="$(find planning)/figure" />
+        <param name="planning_log_path"  value="$(find planning)/../../log/planning_log/" />
+    </node>
+</launch>

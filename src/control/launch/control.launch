@@ -1,0 +1,9 @@
+<!-- -->
+<launch>
+    <node pkg="control" type="control" name="control" output="screen">
+        <param name="ues_sim_time"  value="false" />
+        <rosparam command="load" file="$(find control)/config/vehicle.yaml"/>
+        <param name="control_path"  value="$(find control)/figure" />
+        <param name="control_log_path"  value="$(find control)/../../log/control_log/" />
+    </node>
+</launch>
