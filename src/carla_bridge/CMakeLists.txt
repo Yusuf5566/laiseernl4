@@ -23,7 +23,7 @@ include_directories(
 )
 
 # 替换成自己下载的路径
-set(CARLA_LIB "$ENV{HOME}/Desktop/my_project/carla/laiseernl4/carla_lib")
+set(CARLA_LIB "$ENV{HOME}/laiseernl4/carla_lib")
 
 add_executable(${PROJECT_NAME}
         src/common/utils.cpp)

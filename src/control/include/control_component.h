@@ -10,7 +10,6 @@
 #define LAISEERNL4_CONTROL_COMPONENT_H
 #include "controller/pure_controller.h"
 #include <thread>
-#include "controller/lqr_controller.h"
 #include "ros/ros.h"
 #include "control_msgs/ackerman_control.h"
 #include "control_msgs/control_debug.h"
@@ -35,8 +34,6 @@ private:
     void PlanningCallback(const planning_msgs::way_point& waypoint_msg);
     void VehicleStateCallback(const carla_msgs::carla_vehicle_state& vehicle_state_msg);
     void RequestTrajectory();
-    void TimerCallbackRun();
-    void ControlDebug();
 
 private:
     ros::NodeHandle _nh;

@@ -13,8 +13,6 @@
 #include "planning_msgs/PlanningPoint.h"
 #include "planning_msgs/way_point.h"
 #include "carla_msgs/carla_vehicle_state.h"
-#include "/home/yuong/Desktop/my_project/carla/laiseernl4/devel/include/carla_msgs/carla_route.h"
-#include "/home/yuong/Desktop/my_project/carla/laiseernl4/devel/include/carla_msgs/carla_vehicle_state.h"
 
 namespace laiseern
 {

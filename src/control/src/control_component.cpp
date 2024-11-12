@@ -22,19 +22,8 @@ bool ControlComponent::Init()
     _control_pub = _nh.advertise<control_msgs::ackerman_control>("/control_topic", 10);
     _control_debug = _nh.advertise<control_msgs::control_debug>("/control_debug", 10);
     _vehicle_state_sub = _nh.subscribe("/State", 10, &ControlComponent::VehicleStateCallback, this);
-    //    _planning_sub = _nh.subscribe("/planning_topic", 10, &ControlComponent::PlanningCallback, this);
-    _control_client = _nh.serviceClient<planning_msgs::Trajectory>("/pnc_trajectory");
-    _tid = std::thread(&ControlComponent::TimerCallbackRun, this);
+    _planning_sub = _nh.subscribe("/planning_topic", 10, &ControlComponent::PlanningCallback, this);
     return true;
-}
-
-void ControlComponent::TimerCallbackRun()
-{
-    while (ros::ok())
-    {
-        RequestTrajectory();
-        sleep(0.1);
-    }
 }
 
 void ControlComponent::PlanningCallback(const planning_msgs::way_point& waypoint_msg)
@@ -82,14 +71,6 @@ void ControlComponent::RequestTrajectory()
             _planning_trajectory.push_back(point);
         }
     }
-}
-
-void ControlComponent::ControlDebug()
-{
-    _control_debug_msg.act_x = _vehicle_state.point.x;
-    _control_debug_msg.act_y = _vehicle_state.point.y;
-
-    _control_debug.publish(_control_debug_msg);
 }
 
 void ControlComponent::VehicleStateCallback(const carla_msgs::carla_vehicle_state& vehicle_state_msg)

@@ -36,6 +36,7 @@ void PlanningComponent::RoutingCallback(const carla_msgs::carla_route msg)
         std::cout << "routing_point is empty" << std::endl;
         return;
     }
+    _routing_path.clear();
     for (size_t i = 0; i < msg.waypoints.size(); ++i)
     {
         Point temp;
@@ -72,14 +73,6 @@ void PlanningComponent::MainLoop()
         }
         _path_pub.publish(final_path);
         std::cout << "publish a path=" << _final_path.size() << std::endl;
-        if (!final_path.point.empty())
-        {
-            ROS_INFO("published a path!");
-        }
-        else
-        {
-            ROS_INFO("final path is empty!");
-        }
 
         loop_rate.sleep();
     }
@@ -104,7 +97,8 @@ bool PlanningComponent::GetPath(std::vector<Point> reference)
         }
     }
 
-    for (size_t i = _closest_index; i < 200; ++i)
+    _final_path.clear();
+    for (size_t i = 0; i < reference.size(); ++i)
     {
         Point temp;
         temp.x = reference[i].x;
@@ -113,6 +107,7 @@ bool PlanningComponent::GetPath(std::vector<Point> reference)
         _final_path.push_back(temp);
         //        ROS_INFO("reference%zu\n x:%f y:%f", i, temp.x, temp.y);
     }
+
     if (_final_path.size() < 50)
     {
         std::cout << "final path is too short" << std::endl;
